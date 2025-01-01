@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/root/venv/bin/python3
 import MySQLdb
 import sys
 
