@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-
-
 """This module defines an integer addition function."""
 
 
