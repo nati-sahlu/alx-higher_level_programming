@@ -23,6 +23,7 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         """"sets width of the rectangle"""
+        self.validate("width", value, allow_zero=False)
         self.__width = value
 
     @property
@@ -33,6 +34,7 @@ class Rectangle(Base):
     @height.setter
     def height(self, value):
         """sets the heght of the rectangle"""
+        self.validate("height", value, allow_zero=False)
         self.__height = value
 
     @property
@@ -43,6 +45,7 @@ class Rectangle(Base):
     @x.setter
     def x(self, value):
         """sets x of this rectangle."""
+        self.validate("x", value, allow_zero=True)
         self.__x = value
 
     @property
@@ -53,4 +56,16 @@ class Rectangle(Base):
     @y.setter
     def y(self, value):
         """sets y of this rectangle."""
+        self.validate("y", value, allow_zero=True)
         self.__y = value
+
+    def validate(self, name, value, allow_zero=True):
+        '''Method for validating the value.'''
+        if not isinstance(value, int):
+            raise TypeError(f"{name} must be an integer")
+        if allow_zero:
+            if value < 0:
+                raise ValueError(f"{name} must be >= 0")
+        else:
+            if value <= 0:
+                raise ValueError(f"{name} must be > 0")
