@@ -59,5 +59,5 @@ TypeError: list expected at most 1 argument, got 2
 >>> mix_list.print_sorted()
 Traceback (most recent call last):
 ...
-TypeError: All elements must be of the same comparable type
+TypeError: elements must be of the same  type
 
