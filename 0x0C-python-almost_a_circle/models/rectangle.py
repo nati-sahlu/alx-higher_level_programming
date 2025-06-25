@@ -77,3 +77,8 @@ class Rectangle(Base):
     def display(self):
         '''Prints string representation of the rectangle.'''
         print(('#' * self.width + '\n') * self.height, end="")
+
+    def __str__(self):
+        """Returns string info about this rectangle."""
+        return f"[{type(self).__name__}] ({self.id}) \
+                {self.x}/{self.y} - {self.width}/{self.height}"
