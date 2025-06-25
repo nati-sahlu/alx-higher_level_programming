@@ -84,3 +84,10 @@ class Rectangle(Base):
         """Returns string info about this rectangle."""
         return (f"[{type(self).__name__}] ({self.id}) "
                 f"{self.x}/{self.y} - {self.width}/{self.height}")
+
+    def update(self, *args):
+        """Assigns arguments to attributes in order: id, width, height, x, y"""
+        attrs = ['id', 'width', 'height', 'x', 'y']
+        for i, arg in enumerate(args):
+            if i < len(attrs):
+                setattr(self, attrs[i], arg)
