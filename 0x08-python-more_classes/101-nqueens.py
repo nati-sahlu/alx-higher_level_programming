@@ -17,13 +17,13 @@ def init_board(n):
         list: A 2D list representing the empty chessboard.
     """
     board = []
-    [board.append([]) for i in range(n)]
-    [row.append(' ') for i in range(n) for row in board]
+    [board.append([]) for _ in range(n)]
+    [row.append(' ') for _ in range(n) for row in board]
     return (board)
 
 
 def board_deepcopy(board):
-     """
+    """
     Creates a deep copy of a chessboard.
 
     Args:
@@ -38,7 +38,7 @@ def board_deepcopy(board):
 
 
 def get_solution(board):
-     """
+    """
     Converts a solved board into the required output format.
 
     Args:
@@ -100,7 +100,7 @@ def xout(board, row, col):
 
 
 def recursive_solve(board, row, queens, solutions):
-     """
+    """
     Uses recursion and backtracking to find all N-Queens solutions.
 
     Args:
@@ -137,8 +137,8 @@ if __name__ == "__main__":
     if int(sys.argv[1]) < 4:
         print("N must be at least 4")
         sys.exit(1)
-    
-    board = init_board(int(sys.argv[1]))
+    n = int(sys.argv[1])
+    board = init_board(n)
     solutions = recursive_solve(board, 0, 0, [])
     for sol in solutions:
         print(sol)
