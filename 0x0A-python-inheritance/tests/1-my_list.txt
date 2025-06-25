@@ -1,17 +1,63 @@
 >>> MyList = __import__('1-my_list').MyList
+
+# Test: Inherits from list
+>>> issubclass(MyList, list)
+True
+
+# Test: class creation and __str__ (inherited from list)
 >>> my_list = MyList()
+>>> print(my_list)
+[]
+
+# Test: append and print
 >>> my_list.append(3)
 >>> my_list.append(1)
 >>> my_list.append(2)
 >>> print(my_list)
 [3, 1, 2]
+
+# Test: print_sorted does not modify original
 >>> my_list.print_sorted()
 [1, 2, 3]
 >>> print(my_list)
 [3, 1, 2]
->>> isinstance(my_list, list)
-True
->>> issubclass(MyList, list)
-True
->>> type(my_list)
-<class '1-my_list.MyList'>
+
+# Test: sorted append and sorted print
+>>> new_list = MyList()
+>>> new_list.append(1)
+>>> new_list.append(2)
+>>> new_list.append(3)
+>>> print(new_list)
+[1, 2, 3]
+>>> new_list.print_sorted()
+[1, 2, 3]
+
+# Test: print_sorted with negative numbers
+>>> neg_list = MyList()
+>>> neg_list.append(-3)
+>>> neg_list.append(-1)
+>>> neg_list.append(-2)
+>>> print(neg_list)
+[-3, -1, -2]
+>>> neg_list.print_sorted()
+[-3, -2, -1]
+
+# Test: print_sorted with empty list
+>>> empty = MyList()
+>>> print(empty)
+[]
+>>> empty.print_sorted()
+[]
+
+# Test: invalid instantiation (too many arguments)
+>>> my_list = MyList([1, 2], [3, 4])
+Traceback (most recent call last):
+TypeError: list expected at most 1 argument, got 2
+
+# Test: invalid element types (mixing int and str)
+>>> mix_list = MyList([1, "2", 3])
+>>> mix_list.print_sorted()
+Traceback (most recent call last):
+...
+TypeError: All elements must be of the same comparable type
+
