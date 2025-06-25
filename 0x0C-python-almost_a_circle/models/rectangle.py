@@ -15,43 +15,42 @@ class Rectangle(Base):
         self.x = x
         self.y = y
 
-        @property
-        def width(self):
-            """gets width of the rectangle"""
-            return self.__width
+    @property
+    def width(self):
+        """gets width of the rectangle"""
+        return self.__width
 
-        @width.setter
-        def width(self, value):
-            """"sets width of the rectangle"""
-            self.__width = value
+    @width.setter
+    def width(self, value):
+        """"sets width of the rectangle"""
+        self.__width = value
 
-        @property
-        def height(self):
-            """gets the height of the rectangle"""
-            return self.__height
+    @property
+    def height(self):
+        """gets the height of the rectangle"""
+        return self.__height
 
-        @height.setter
-        def height(self, value):
-            """sets the heght of the rectangle"""
-            self.__height = value
+    @height.setter
+    def height(self, value):
+        """sets the heght of the rectangle"""
+        self.__height = value
 
-        @property
-        def x(self):
-            """gets x of this rectangle."""
-            return self.__x
+    @property
+    def x(self):
+        """gets x of this rectangle."""
+        return self.__x
 
-        @x.setter
-        def x(self, value):
-            """sets x of this rectangle."""
+    @x.setter
+    def x(self, value):
+        """sets x of this rectangle."""
+        self.__x = value
 
-            self.__x = value
+    @property
+    def y(self):
+        """gets y of this rectangle."""
+        return self.__y
 
-        @property
-        def y(self):
-            """gets y of this rectangle."""
-            return self.__y
-
-        @y.setter
-        def y(self, value):
-            """sets y of this rectangle."""
-            self.__y = value
+    @y.setter
+    def y(self, value):
+        """sets y of this rectangle."""
+        self.__y = value
