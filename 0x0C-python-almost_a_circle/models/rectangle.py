@@ -76,7 +76,9 @@ class Rectangle(Base):
 
     def display(self):
         '''Prints string representation of the rectangle.'''
-        print(('#' * self.width + '\n') * self.height, end="")
+        char = '\n' * self.y + \
+            (' ' * self.x + '#' * self.width + '\n') * self.height
+        print(char, end='')
 
     def __str__(self):
         """Returns string info about this rectangle."""
