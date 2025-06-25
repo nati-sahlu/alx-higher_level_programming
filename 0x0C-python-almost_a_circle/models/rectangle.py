@@ -85,9 +85,16 @@ class Rectangle(Base):
         return (f"[{type(self).__name__}] ({self.id}) "
                 f"{self.x}/{self.y} - {self.width}/{self.height}")
 
-    def update(self, *args):
-        """Assigns arguments to attributes in order: id, width, height, x, y"""
+    def update(self, *args, **kwargs):
+        """Updates attributes using positional or keyword args."""
         attrs = ['id', 'width', 'height', 'x', 'y']
-        for i, arg in enumerate(args):
-            if i < len(attrs):
-                setattr(self, attrs[i], arg)
+
+        if args and len(args) > 0:
+            for i, arg in enumerate(args):
+                if i < len(attrs):
+                    setattr(self, attrs[i], arg)
+
+        else:
+            for key, value in kwargs.items():
+                if hasattr(self, key):
+                    setattr(self, key, value)
