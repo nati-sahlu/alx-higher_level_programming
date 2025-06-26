@@ -2,6 +2,7 @@
 '''Module for Base class.'''
 from json import dumps, loads
 import os
+import csv
 
 
 class Base:
@@ -72,3 +73,57 @@ class Base:
             json_str = f.read()
             list_dicts = cls.from_json_string(json_str)
             return [cls.create(**d) for d in list_dicts]
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        filename = f"{cls.__name__}.csv"
+        if list_objs is None:
+            list_objs = []
+
+        with open(filename, "w", newline='') as csvfile:
+            writer = csv.writer(csvfile)
+
+            for obj in list_objs:
+                if cls.__name__ == "Rectangle":
+                    row = [obj.id, obj.width, obj.height, obj.x, obj.y]
+                elif cls.__name__ == "Square":
+                    row = [obj.id, obj.size, obj.x, obj.y]
+                else:
+                    row = []
+                writer.writerow(row)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        filename = f"{cls.__name__}.csv"
+        if not os.path.exists(filename):
+            return []
+
+        with open(filename, "r", newline='') as csvfile:
+            reader = csv.reader(csvfile)
+            instances = []
+
+            for row in reader:
+                if cls.__name__ == "Rectangle":
+                    id_, width, height, x, y = map(int, row)
+                    dict_obj = {
+                        "id": id_,
+                        "width": width,
+                        "height": height,
+                        "x": x,
+                        "y": y
+                    }
+                elif cls.__name__ == "Square":
+                    id_, size, x, y = map(int, row)
+                    dict_obj = {
+                        "id": id_,
+                        "size": size,
+                        "x": x,
+                        "y": y
+                    }
+                else:
+                    dict_obj = {}
+
+                instance = cls.create(**dict_obj)
+                instances.append(instance)
+
+        return instances
